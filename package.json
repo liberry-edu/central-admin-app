@@ -1,0 +1,15 @@
+{
+  "name": "central-admin-app",
+  "version": "1.0.0",
+  "description": "Admin app for Central server to upload content, create pendrive, etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vaibhav Sinha",
+  "license": "ISC",
+  "dependencies": {
+    "ng-admin": "^1.0.0-alpha2",
+    "ng-file-upload": "^12.0.4"
+  }
+}
