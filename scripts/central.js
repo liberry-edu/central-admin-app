@@ -77,8 +77,8 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
 
     //Start configuring ng-admin
     var nga = NgAdminConfigurationProvider;
-    //var admin = nga.application('Liberry Central').baseApiUrl(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/api/');
-    var admin = nga.application('Liberry Central').baseApiUrl('http://admin.liberry.edu/api/');
+    var admin = nga.application('Liberry Central').baseApiUrl(location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/api/');
+    //var admin = nga.application('Liberry Central').baseApiUrl('http://admin.liberry.edu/api/');
 
     //Define entites
     var app = nga.entity('apps');
@@ -92,11 +92,13 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
     app.listView().fields([
         nga.field('name').isDetailLink(true),
         nga.field('description'),
+        nga.field('url'),
         nga.field('status')
     ]);
     app.creationView().fields([
         nga.field('name'),
-        nga.field('description')
+        nga.field('description'),
+        nga.field('url')
     ]);
     app.editionView().fields(category.creationView().fields());
     admin.addEntity(app);
