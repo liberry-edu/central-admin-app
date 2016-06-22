@@ -107,11 +107,13 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
     category.listView().fields([
         nga.field('name').isDetailLink(true),
         nga.field('description'),
+        nga.field('image'),
         nga.field('status')
     ]);
     category.creationView().fields([
         nga.field('name'),
         nga.field('description'),
+        nga.field('image'),
         nga.field('modules', 'referenced_list').targetEntity(module).targetReferenceField('category_id').targetFields([nga.field('name')])
     ]);
     category.editionView().fields(category.creationView().fields());
@@ -121,15 +123,19 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
     module.listView().fields([
         nga.field('name').isDetailLink(true),
         nga.field('description'),
+        nga.field('image'),
         nga.field('status'),
         nga.field('category_id', 'reference').label('Category').targetEntity(category).targetField(nga.field('name')),
         nga.field('parent_id', 'reference').label('Parent').targetEntity(module).targetField(nga.field('name'))
+        nga.field('default_playlist_id', 'reference').label('Default Playlist').targetEntity(playlist).targetField(nga.field('name'))
     ]);
     module.creationView().fields([
         nga.field('name'),
         nga.field('description'),
+        nga.field('image'),
         nga.field('category_id', 'reference').label('Category').targetEntity(category).targetField(nga.field('name')),
         nga.field('parent_id', 'reference').label('Parent').targetEntity(module).targetField(nga.field('name')),
+        nga.field('default_playlist_id', 'reference').label('Default Playlist').targetEntity(playlist).targetField(nga.field('name'))
         nga.field('content', 'referenced_list').targetEntity(content).targetReferenceField('module_id').targetFields([nga.field('name')])
     ]);
     module.editionView().fields(module.creationView().fields());
