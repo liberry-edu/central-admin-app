@@ -14,6 +14,9 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
             params.filters = params._filters;
             params.sortField = params._sortField;
             params.sortDir = params._sortDir;
+            if(isNaN(params.offset)) {
+                delete params.offset;
+            }
             delete params._page;
             delete params._perPage;
             delete params._filters;
