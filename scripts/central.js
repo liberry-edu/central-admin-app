@@ -59,11 +59,11 @@ centralApp.config(['NgAdminConfigurationProvider', 'RestangularProvider', '$stat
         }
         this.prepareDriveContent = function() {
             var that = this;
-            $http.get('/download').then(function(response) {
+            $http.get('/api/download').then(function(response) {
                 that.notification.log('Prepared content successfully');
             },
             function(err) {
-                that.notification.error();('Content preparation failed. Contact system administrator');
+                that.notification.error('Content preparation failed. Contact system administrator');
             });
         }
     };
